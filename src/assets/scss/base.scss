@@ -1,0 +1,49 @@
+
+body{
+  font-family: IRANSans;
+  font-size: .9rem;
+}
+//Some General Sizes
+p{
+  font-size:.9em;
+}
+h1{
+  font-size: 2em;
+  font-weight:$ultra-strong-font-weight;
+}
+h2{
+  font-size: 1.5em;
+  font-weight: $ultra-strong-font-weight;
+}
+h3{
+  font-size: 1.17em;
+  font-weight: $ultra-strong-font-weight;
+
+}
+h4{
+  font-size: 1em;
+  font-weight: $ultra-strong-font-weight;
+
+}
+h5{
+  font-size: .83em;
+  font-weight: $ultra-strong-font-weight;
+
+}
+h6{
+  font-size: .75em;
+  font-weight: $ultra-strong-font-weight;
+
+}
+
+
+
+
+a{
+  &:hover{
+    text-decoration: none;
+  }
+}
+
+
+

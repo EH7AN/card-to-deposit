@@ -1,0 +1,228 @@
+.finno-btn{
+  @include border-radius(6px);
+  @include transition(all 0.3s ease 0s);
+  @include box-shadow(0,8px,15px,rgba($secondary-color, 0.4));
+  line-height: normal;
+  font-weight:$strong-font-weight;
+  border: none;
+  color: $white;
+  background-color: $secondary-color;
+  padding: 9px 15px;
+  font-size: .9em;
+  &:hover{
+    @include box-shadow(0px,15px,20px,rgba($primary-color, 0.4));
+    background-color: $primary-color;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+}
+
+.finno-secondary-color{
+  color: $secondary-color;
+}
+.color-white{
+  color: $white;
+}
+.color-black{
+  color: $black;
+}
+
+.ltr{
+  direction: ltr;
+}
+
+
+//SIZE CLASSES
+.s-10{
+  font-size: 0.625em;
+}
+.s-11{
+  font-size: 0.688em;
+}
+.s-12{
+  font-size: 0.75em;
+}
+.s-13{
+  font-size: 0.813em;
+}
+.s-14{
+  font-size: 0.875em;
+}
+.s-16{
+  font-size: 1em;
+}
+.s-18{
+  font-size: 1.125em;
+}
+.s-20{
+  font-size: 1.25em;
+}
+.s-22{
+  font-size: 1.375em;
+}
+.s-25{
+  font-size: 1.563em;
+}
+.s-30{
+  font-size: 1.875em;
+}
+.s-35{
+  font-size: 2.188em;
+}
+.s-40{
+  font-size: 2.500em;
+}
+
+
+//TEXT COLORS
+.primary-color{
+  color: $primary-color!important;
+}
+.secondary-color{
+  color: $secondary-color!important;
+}
+
+
+
+//LINE HEIGHT
+
+.lh-18{
+  line-height: 18px!important;
+}
+.lh-20{
+  line-height: 20px!important;
+}
+.lh-22{
+  line-height: 22px!important;
+}
+.lh-24{
+  line-height: 24px!important;
+}
+.lh-26{
+  line-height: 26px!important;
+}
+
+
+//WIDTH CUSTOM SIZE
+.w-80{
+  width: 80% !important;
+}
+.w-85{
+  width: 85% !important;
+}
+.w-90{
+  width: 90% !important;
+}
+.w-95{
+  width: 95% !important;
+}
+
+
+//COlOR BRIGHTNESSIFIER :))
+//LIGHTENINIG
+.lighter-dark-text-5{
+  color: lighten($black,5);
+}
+.lighter-dark-text-10{
+  color: lighten($black,10);
+}
+.lighter-dark-text-15{
+  color: lighten($black,15);
+}
+.lighter-dark-text-20{
+  color: lighten($black,20);
+}
+.lighter-dark-text-30{
+  color: lighten($black,30);
+}
+.lighter-dark-text-50{
+  color: lighten($black,50);
+}
+.lighter-dark-text-60{
+  color: lighten($black,60);
+}
+
+//DARKEN
+.darker-light-text-5{
+  color: darken($white,5);
+}
+.darker-light-text-10{
+  color: darken($white,10);
+}
+.darker-light-text-15{
+  color: darken($white,15);
+}
+.darker-light-text-20{
+  color: darken($white,20);
+}
+.darker-light-text-30{
+  color: darken($white,20);
+}
+.darker-light-text-50{
+  color: darken($white,20);
+}
+.darker-light-text-60{
+  color: darken($white,60);
+}
+
+//ICON CUSTOM SIZE
+.fa-5x{
+  font-size: 5em;
+}
+
+//SCROLL DOWN ANIMATION
+
+.icon-scroll,
+.icon-scroll:before {
+  position: absolute;
+  left: 50%;
+}
+.icon-scroll {
+  width: 30px;
+  height: 50px;
+  margin-left: -20px;
+  bottom: 15vh;
+  margin-top: -35px;
+  box-shadow: inset 0 0 0 1.5px darken($white,35);
+  border-radius: 25px;
+  z-index: 10;
+}
+.text--left{
+  text-align: left!important;
+}
+.icon-scroll:before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  background: darken($white,35);
+  margin-left: -2px;
+  top: 8px;
+  border-radius: 4px;
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: scroll;
+  animation-name: scroll;
+}
+@-webkit-keyframes scroll {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(125px);
+    transform: translateY(15px);
+  }
+}
+@keyframes scroll {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(15px);
+    transform: translateY(15px);
+  }
+}
