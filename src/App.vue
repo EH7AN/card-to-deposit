@@ -7,8 +7,15 @@
 <script>
 export default {
   name: 'App'
-}
+};
 </script>
+<style lang="css">
+  @import './assets/libs/css/bootstrap-rtl.min.css';
+  @import './assets/libs/css/bootstrap-float-label.min.css';
+  @import './assets/libs/css/font-awesome/fontawesome.min.css';
+  @import './assets/libs/css/font-awesome/fontawesome.min.css';
+  @import './assets/css/main.css';
+</style>
 <style lang="css">
   @font-face {
     font-family: "Iransans_Bold";
