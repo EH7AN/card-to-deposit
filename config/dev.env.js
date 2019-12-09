@@ -4,5 +4,5 @@ const prodEnv = require('./prod.env')
 
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  SERVER_URL: '"https://apibeta.finnotech.ir/"'
+  SERVER_URL: '"https://apibeta.finnotech.ir/facility/v2"'
 })

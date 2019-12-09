@@ -8,75 +8,56 @@
             <div class="first-section-overlay"></div>
             <div class="first-section-mask"></div>
             <div class="parallax-inner">
-                <div class="header-logo container rtl">
+                <div class="header-logo container rtl justify-content-center d-flex flex-column align-items-center">
                     <a class="GTM-Header-Logo" href="https://www.finnotech.ir" target="_blank">
                         <img src="@/assets/img/0-03.png" alt="finnotech">
                     </a>
+                  <h1>پلتفرم بانکداری باز</h1>
                 </div>
-                <div class="container">
-                    <div class="row rtl">
+                <div class="container pt-0">
+                    <div class="row rtl jCenter">
                         <!-- ====================== Begins Finotech Descriptions ====================== -->
-                        <div class="col-lg-7 col-md-6 col-ms-12 first-section_paragraph rtl">
-                            <h1 class="mb-3 s-35">راهکارهای فینوتک برای تصفیه حساب گروهی</h1>
-                            <h2 class="mt-3 lighter-dark-text-50 ">با APIهای فینوتک بانک خود را بسازید!</h2>
-                            <p class="lh-22 s-16 w-75 text-justify">اگر <strong>تعداد</strong> یا <strong>مبلغ</strong> پرداخت‌های
-                                کسب‌وکارتان زیاد است، با استفاده از APIهای فینوتک می‌توانید مستقیما به بانک متصل شوید و
-                                بدون مراجعه به بانک یا اینترنت‌بانک به حساب بانکی خود دسترسی داشته باشید
-                            </p>
-                            <ul class="list-unstyled first-section_features">
-                                <li class="mt-2 s-18">
-                                    <i class="fas fa-arrow-left mr-1 secondary-color"></i>
-                                    کاهش هزینه تمام‌شده
-                                </li>
-                                <li class="mt-2 s-18">
-                                    <i class="fas fa-arrow-left mr-1 secondary-color"></i>
-                                    جلوگیری از خطای انسانی
-                                </li>
-                                <li class="mt-2 s-18">
-                                    <i class="fas fa-arrow-left mr-1 secondary-color"></i>
-                                    افزایش سرعت تصفیه حساب
-                                </li>
-                            </ul>
-                        </div>
                         <!-- ====================== Ends Finotech Descriptions ====================== -->
                         <!-- ====================== Begins Form ====================== -->
                         <div class="col-lg-5 col-md-6 col-ms-12 pb-3">
                             <div class="form-container">
                                 <div class="form-container-inner rtl">
-                                    <h2 class="mb-3 s-18">فرم استعلام شماره حساب</h2>
+                                    <h2 class="mb-3 s-18">تبدیل شماره کارت به حساب</h2>
                                     <div>
                                         <form class="needs-validation register-form">
                                             <!-- Card Number -->
-                                            <div class="form-group mb-3">
-                                                <div class="col-xs-12 rtl iban-title">
-                                                    <label for="">شماره کارت</label>
-                                                </div>
+                                            <div class="form-group mb-1">
                                                 <div class="col-xs-12 iban-holder">
-                                                    <input type="text" id="fullName" class="form-control" placeholder=" "
+                                                    <input type="text" id="part0" class="form-control" placeholder=" "
                                                            required maxlength="4"
                                                            v-model="cardSections[0]"
                                                            v-on:keyup="checkMaxLengthReached($event,false)">
 
-                                                    <input type="text" id="fullName" class="form-control" placeholder=" "
+                                                    <input type="text" id="part1" class="form-control" placeholder=" "
                                                     required maxlength="4"
                                                     v-model="cardSections[1]"
                                                     v-on:keyup="checkMaxLengthReached($event,false)">
 
-                                                    <input type="text" id="fullName" class="form-control" placeholder=" "
+                                                    <input type="text" id="part2" class="form-control" placeholder=" "
                                                     required maxlength="4"
                                                     v-model="cardSections[2]"
                                                     v-on:keyup="checkMaxLengthReached($event,false)">
 
-                                                    <input type="text" id="fullName" class="form-control" placeholder=" "
+                                                    <input type="text" id="part3" class="form-control" placeholder=" "
                                                     required maxlength="4"
                                                     v-model="cardSections[3]"
                                                     v-on:keyup="checkMaxLengthReached($event,true)">
                                                 </div>
                                                 <div class="col-xs-12 mt-2">
-                                                    <p v-if="hasErr">{{msg}}</p>
+                                                    <p v-if="hasErr" class="my-2" :class="{failed: !canActive, success: canActive}">{{msg}}</p>
                                                 </div>
                                             </div>
-                                            <div class="my-2" id="form-container"></div>
+                                            <div class="form-group mb-3 d-f flex-column" style="border-top: 1px dashed #000000">
+                                              <div class="d-flex justify-content-between mt-3 userdata-box" :class="{active: canActive}">
+                                                <span>نام: {{userData.name ? userData.name: '-----'}}</span>
+                                                <span>شماره حساب: {{userData.deposit ? userData.deposit: 'xxxxxxx'}}</span>
+                                              </div>
+                                            </div>
                                             <button class="GTM-Form-Button finno-btn mb-2 btn-lg btn-block finno-btn mb-2 btn-lg btn-block" id="FormSubmit" @click="triggerInquirey"> استعلام
                                             </button>
                                         </form>
@@ -87,11 +68,12 @@
                         <!-- ====================== Ends Form ====================== -->
                     </div>
                 </div>
+              <h3 class="text-center rtl d-block">برای درخواست‌های بیشتر و دریافت API تبدیل دسته‌ای شماره کارت به حساب <a target="_blank" href="https://www.finnotech.ir/fa/SiteRequest/CompanyServiceRequest">کلیک</a> کنید.</h3>
             </div>
-            <div class="icon-scroll"></div>
         </section>
+
         <!--    FOOTER   -->
-<footer>
+        <footer>
     <section class="footer-section">
         <div class="container">
             <div class="row rtl">
@@ -157,48 +139,52 @@
 <script>
 import service from '@/services/generalService'
 export default {
-    name: "Landing",
-    data () {
-        return {
-            card: '',
-            cardSections: [],
-            client: 12345,
-            deposit: '',
-            hasErr: false,
-            msg: 'خطایی رخ داده است'
-        }
-    },
-    methods: {
-        checkMaxLengthReached (event, islast) {
-            if (event.target.value.length == 4) {
-                if (islast) {
-                    this.card = this.cardSections.join('')
-                    console.log(this.card)
-                    this.triggerInquirey()
-                } else {
-                    event.target.nextElementSibling.focus()    
-                }
-            }
-        },
-        triggerInquirey () {
-            service.getMethod(`facility/v2/clients/${this.client}/cardToDeposit?card=${this.card}`)
-                .then(response => {
-                  this.deposit = response
-                  this.hasErr = true
-                  if (response.status === 'DONE') {
-                    if (response.result.result === 0) {
-                        this.msg = response.result.deposit
-                    } else {
-                        this.msg = response.result.description
-                    }
-                  }
-                }).catch(err => {
-                    this.hasErr = true
-                    this.msg = 'خطایی رخ داده است'
-                })
-        }
+  name: 'Landing',
+  data () {
+    return {
+      card: '',
+      cardSections: [],
+      client: 12345,
+      deposit: '',
+      hasErr: false,
+      canActive: false,
+      msg: '',
+      userData: {}
     }
-};
+  },
+  methods: {
+    checkMaxLengthReached (event, islast) {
+      if (event.target.value.length === 4) {
+        if (islast) {
+          this.card = this.cardSections.join('')
+          console.log(this.card)
+          this.triggerInquirey()
+        } else {
+          event.target.nextElementSibling.focus()
+        }
+      }
+    },
+    triggerInquirey () {
+      service.getMethod(`/clients/${this.client}/cardToDeposit?card=${this.card}`)
+        .then(response => {
+          this.deposit = response
+          this.hasErr = true
+          if (response.status === 'DONE') {
+            if (response.result.result === '0') {
+              this.msg = response.result.description
+              this.canActive = true
+              this.userData = response.result
+            } else {
+              this.msg = response.result.description
+            }
+          }
+        }).catch(err => {
+          this.hasErr = true
+          this.msg = 'خطایی رخ داده است'
+        })
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -215,5 +201,22 @@ export default {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
+  }
+  .jCenter {
+    justify-content: center;
+  }
+  .userdata-box span {
+    color: #848181c2;
+  }
+  .userdata-box.active span {
+    color: #000000;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .my-2.success {
+    color: #1c7430;
+  }
+  .my-2.failed {
+    color: #a71d2a;
   }
 </style>
