@@ -38,32 +38,32 @@ a:hover {
   text-decoration: none; }
 
 .finno-btn {
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  -ms-border-radius: 6px;
-  border-radius: 6px;
-  -webkit-transition: all 0.3s ease 0s;
-  -moz-transition: all 0.3s ease 0s;
-  -ms-transition: all 0.3s ease 0s;
-  -o-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
-  -webkit-box-shadow: 0 8px 15px rgba(7, 181, 152, 0.4);
-  -moz-box-shadow: 0 8px 15px rgba(7, 181, 152, 0.4);
-  box-shadow: 0 8px 15px rgba(7, 181, 152, 0.4);
-  line-height: normal;
-  font-weight: 500;
-  border: none;
-  color: #fff;
-  background-color: #07b598;
-  padding: 9px 15px;
-  font-size: .9em; }
+  -webkit-border-radius: 6px !important;
+  -moz-border-radius: 6px !important;
+  -ms-border-radius: 6px !important;
+  border-radius: 6px !important;
+  -webkit-transition: all 0.3s ease 0s !important;
+  -moz-transition: all 0.3s ease 0s !important;
+  -ms-transition: all 0.3s ease 0s !important;
+  -o-transition: all 0.3s ease 0s !important;
+  transition: all 0.3s ease 0s !important;
+  -webkit-box-shadow: 0 8px 15px rgba(7, 181, 152, 0.4) !important;
+  -moz-box-shadow: 0 8px 15px rgba(7, 181, 152, 0.4) !important;
+  box-shadow: 0 8px 15px rgba(7, 181, 152, 0.4) !important;
+  line-height: normal !important;
+  font-weight: 500 !important;
+  border: none !important;
+  color: #fff !important;
+  background-color: #07b598 !important;
+  padding: 9px 15px !important;
+  font-size: .9em !important; }
   .finno-btn:hover {
-    -webkit-box-shadow: 0px 15px 20px rgba(0, 1, 140, 0.4);
-    -moz-box-shadow: 0px 15px 20px rgba(0, 1, 140, 0.4);
-    box-shadow: 0px 15px 20px rgba(0, 1, 140, 0.4);
-    background-color: #00018c;
-    color: #fff;
-    transform: translateY(-2px); }
+    -webkit-box-shadow: 0px 15px 20px rgba(0, 1, 140, 0.4) !important;
+    -moz-box-shadow: 0px 15px 20px rgba(0, 1, 140, 0.4) !important;
+    box-shadow: 0px 15px 20px rgba(0, 1, 140, 0.4) !important;
+    background-color: #00018c !important;
+    color: #fff !important;
+    transform: translateY(-2px) !important; }
 
 .finno-secondary-color {
   color: #07b598; }

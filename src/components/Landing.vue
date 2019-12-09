@@ -28,22 +28,22 @@
                                             <!-- Card Number -->
                                             <div class="form-group mb-1">
                                                 <div class="col-xs-12 iban-holder">
-                                                    <input type="text" id="part0" class="form-control" placeholder=" "
+                                                    <input type="tel" id="part0" class="form-control" placeholder=" "
                                                            required maxlength="4"
                                                            v-model="cardSections[0]"
                                                            v-on:keyup="checkMaxLengthReached($event,false)">
 
-                                                    <input type="text" id="part1" class="form-control" placeholder=" "
+                                                    <input type="tel" id="part1" class="form-control" placeholder=" "
                                                     required maxlength="4"
                                                     v-model="cardSections[1]"
                                                     v-on:keyup="checkMaxLengthReached($event,false)">
 
-                                                    <input type="text" id="part2" class="form-control" placeholder=" "
+                                                    <input type="tel" id="part2" class="form-control" placeholder=" "
                                                     required maxlength="4"
                                                     v-model="cardSections[2]"
                                                     v-on:keyup="checkMaxLengthReached($event,false)">
 
-                                                    <input type="text" id="part3" class="form-control" placeholder=" "
+                                                    <input type="tel" id="part3" class="form-control" placeholder=" "
                                                     required maxlength="4"
                                                     v-model="cardSections[3]"
                                                     v-on:keyup="checkMaxLengthReached($event,true)">
@@ -51,15 +51,31 @@
                                                 <div class="col-xs-12 mt-2">
                                                     <p v-if="hasErr" class="my-2" :class="{failed: !canActive, success: canActive}">{{msg}}</p>
                                                 </div>
+                                              <!-- Recaptcha-->
+                                                <div class="col-xs-12 mt-2">
+                                                  <div class="row d-flex justify-content-center">
+                                                    <template>
+                                                      <vue-recaptcha sitekey="6LdjzsYUAAAAADUCD7fsnr9_sRuvDJ8u6b_90NqU"
+                                                                     @verify="onVerify"
+                                                                     @expired="onExpired"
+                                                                     theme="'dark'"
+                                                                     size="100%"
+                                                      ></vue-recaptcha>
+                                                    </template>
+                                                  </div>
+                                                </div>
                                             </div>
+                                          <!-- User Data Box-->
                                             <div class="form-group mb-3 d-f flex-column" style="border-top: 1px dashed #000000">
                                               <div class="d-flex justify-content-between mt-3 userdata-box" :class="{active: canActive}">
                                                 <span>نام: {{userData.name ? userData.name: '-----'}}</span>
                                                 <span>شماره حساب: {{userData.deposit ? userData.deposit: 'xxxxxxx'}}</span>
                                               </div>
                                             </div>
-                                            <button class="GTM-Form-Button finno-btn mb-2 btn-lg btn-block finno-btn mb-2 btn-lg btn-block" id="FormSubmit" @click="triggerInquirey"> استعلام
-                                            </button>
+                                          <vue-ladda data-style="zoom-in" class="GTM-Form-Button finno-btn mb-2 btn-lg btn-block finno-btn mb-2 btn-lg btn-block"
+                                                     :loading="isLoading"
+                                                     :disabled="disableBtn"
+                                                     @click.prevent="triggerInquirey">دریافت</vue-ladda>
                                         </form>
                                     </div>
                                 </div>
@@ -138,6 +154,7 @@
 </template>
 <script>
 import service from '@/services/generalService'
+import VueRecaptcha from 'vue-recaptcha';
 export default {
   name: 'Landing',
   data () {
@@ -149,7 +166,9 @@ export default {
       hasErr: false,
       canActive: false,
       msg: '',
-      userData: {}
+      userData: {},
+      disableBtn: true,
+      isLoading: false
     }
   },
   methods: {
@@ -157,16 +176,16 @@ export default {
       if (event.target.value.length === 4) {
         if (islast) {
           this.card = this.cardSections.join('')
-          console.log(this.card)
-          this.triggerInquirey()
         } else {
           event.target.nextElementSibling.focus()
         }
       }
     },
     triggerInquirey () {
+      this.isLoading = true
       service.getMethod(`/clients/${this.client}/cardToDeposit?card=${this.card}`)
         .then(response => {
+          this.isLoading = false
           this.deposit = response
           this.hasErr = true
           if (response.status === 'DONE') {
@@ -179,10 +198,23 @@ export default {
             }
           }
         }).catch(err => {
+          this.isLoading = false
           this.hasErr = true
           this.msg = 'خطایی رخ داده است'
         })
+    },
+    onVerify: function (response) {
+      this.disableBtn = false
+    },
+    onExpired: function () {
+      this.disableBtn = true
+    },
+    resetRecaptcha () {
+      this.$refs.recaptcha.reset() // Direct call reset method
     }
+  },
+  components: {
+    VueRecaptcha
   }
 }
 </script>
@@ -218,5 +250,26 @@ export default {
   }
   .my-2.failed {
     color: #a71d2a;
+  }
+  .captcha-btn {
+    margin-top: 5px;
+    background-color: #1D9D74;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    border-color: #dbdbdb;
+    text-align: center;
+    font-size: 1em;
+    height: 2.25em;
+    line-height: 1.5;
+    color: white;
+    cursor: pointer;
+    padding-bottom: calc(0.375em - 1px);
+    padding-left: calc(0.625em - 1px);
+    padding-right: calc(0.625em - 1px);
+    padding-top: calc(0.375em - 1px);
+  }
+  .captcha-btn[disabled] {
+    cursor: not-allowed;
+    opacity: 0.6;
   }
 </style>

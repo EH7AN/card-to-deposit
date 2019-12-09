@@ -3,9 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VueLadda from 'vue-ladda'
 Vue.config.productionTip = false
-// ============== Validation Part
-// require('./validation/index')
+// ============== Use Module Part
+Vue.component('vue-ladda', VueLadda)
 
 new Vue({
   el: '#app',
